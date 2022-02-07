@@ -6,7 +6,7 @@ import { getSingleBeanie } from './services/fetch-utils';
 export default function BeanieDetail() {
   // you'll need to track the current beanieBaby in state
   // you'll need to get the route param using the appropriate react router hook
-  const [currentBeanieBaby, setCurrentBeanieBaby] = useState([]);
+  const [beanieBaby, setBeanieBaby] = useState([]);
   const params = useParams();
 
   useEffect(() => {
@@ -14,20 +14,21 @@ export default function BeanieDetail() {
     async function onLoad() {
       const data = await getSingleBeanie(params.id);
 
-      setCurrentBeanieBaby(data);
+      setBeanieBaby(data);
     }
-
-  }, []); // note that you'll want the id from the url in the dependency array because you want the useEffect callback to get called every time the url changes 
+    onLoad();
+  }, [params.id]); // note that you'll want the id from the url in the dependency array because you want the useEffect callback to get called every time the url changes 
 
   function handleBeanieClick() {
     // here's a challenge. How can you link on click to the beanie baby's correct entry in the official beanie baby fan site?
+    window.location.heref === beanieBaby.Link;
   }
 
   return (
     <>
       {/* Feel free to uncomment and use the below code--but you'll need to figure out how to keep it from blowing up on load */}
       
-      {/* <Link to='/'>Home</Link>
+      <Link to='/'>Home</Link>
       <div className='beanie-detail' onClick={handleBeanieClick}>
         <div className='beanie-data'>
           <p>{beanieBaby.animal}</p>
@@ -46,7 +47,7 @@ export default function BeanieDetail() {
           <p>Swing Tag Generation: {beanieBaby.swingTagGeneration}</p>
           <p>Tush Tag Generation: {beanieBaby.tushTagGeneration}</p>
         </div>
-      </div>   */}
+      </div> 
     </>
   );
 }
