@@ -11,6 +11,16 @@ export default function App() {
   return (
     <Router>
       <div className='App'>
+        <nav>
+          <ul>
+            <li>
+              <link to="/">Home</link>
+            </li>
+            <li>
+              <link to="/Detail">Home</link>
+            </li>
+          </ul>
+        </nav>
         <Switch>
           <Route>
             {/* this home page route should list all the beanies */}
