@@ -1,9 +1,18 @@
+/* eslint-disable react/no-unescaped-entities */
 import { Link } from 'react-router-dom';
 
 export default function BeanieBaby({ beanieBaby }) {
   return (
+    // eslint-disable-next-line react/jsx-no-comment-textnodes
     // this should contain a react-router-dom Link to the detail page for this particular beanie baby.
+    // eslint-disable-next-line react/no-unescaped-entities
     // it should also render the beanie baby's image and show the beanie baby's name
-    null
+    <Link to={`/detail/${beanieBaby.id}`}>
+      <div className='beanie-baby'>
+        <p>{beanieBaby.title}</p>
+        <img className='beanie-img' src={beanieBaby.image}/>
+      </div>
+    </Link> 
+ 
   );
 }
